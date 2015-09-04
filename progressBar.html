@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>ProgressBar</title>
+		<style>
+			#ProgressBox{
+				width: 300px; height: 40px; border: 1px solid #c8c8c8; background: white; position: relative; 
+			}
+			#ProgressBar{
+				position: absolute; left: 0; top: 0; z-index: 2; height: 40px; width: 100%; line-height: 40px;
+				color: white; text-align: center; font-size: 20px; font-weight: bold; font-family: Georgia;
+				clip: rect(0px, 0, 40px, 0px); background: #00A1F5;
+			}
+			#ProgressText{
+				position: absolute; left: 0; top: 0; z-index: 1; width: 100%; height: 40px; line-height: 40px;
+				color: black; text-align: center; font-size: 20px; font-weight: bold; font-family: Georgia;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+
+				var iNow = 0;
+
+				var timer = setInterval(function(){
+
+					if(iNow == 100){
+
+						clearInterval(timer);
+
+					}else{
+
+						iNow += 5;
+						
+						progressFn(iNow);
+
+					}
+
+				},30);
+
+				/* 这个方法是通用的，关键在于在实际项目中动态的获取到cent的值。*/
+				function progressFn(cent){
+
+					var oDiv1 = document.getElementById('ProgressBox');
+					var oDiv2 = document.getElementById('ProgressBar');
+					var oDiv3 = document.getElementById('ProgressText');
+
+					var allWidth = parseInt(getStyle(oDiv1,'width'));
+					oDiv2.innerHTML = cent + '%';
+					oDiv3.innerHTML = cent + '%';
+					oDiv2.style.clip = 'rect(0px, '+ cent/100 * allWidth +'px, 40px, 0px)'; /* cent/100 获取到的是0-1之间的数 */
+
+					function getStyle(obj,attr){
+						if(obj.currentStyle){
+
+							return obj.currentStyle[attr];
+
+						}else{
+
+							return getComputedStyle(obj,false)[attr];
+
+						}
+					}
+
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="ProgressBox">
+			<div id="ProgressBar">0%</div>
+			<div id="ProgressText">0%</div>
+		</div>
+	</body>
+</html>
