@@ -1,0 +1,27 @@
+<html>
+   <head>
+		<title>DOM</title>
+		<style>
+			#div{width:100px;height:100px;background:red;position:absolute;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv = document.querySelector('#div');
+				
+				var L = oDiv.offsetLeft;
+				var T = oDiv.offsetTop;
+				
+				setInterval(function(){
+					L++;
+					T++;
+					
+					oDiv.style.left = L + 'px';
+					oDiv.style.top = T + 'px';
+				},30);
+			};
+		</script>
+   </head>   
+   <body>
+      <div id="div"></div>
+   </body>
+</html>
