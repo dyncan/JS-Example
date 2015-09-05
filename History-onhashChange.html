@@ -1,0 +1,46 @@
+<html>
+   <head>
+		<title>html5历史管理-onhashchange</title>   
+		<script>
+			window.onload = function(){
+			   var oInput = document.getElementById('input');
+			   var oDiv = document.getElementById('div');
+			   
+			   var obj = [];
+			   
+			   oInput.onclick = function(){
+				  var number = randomNum(35,7);
+				  oDiv.innerHTML = number;
+				  
+				  var oRD = Math.random();
+				  obj[oRD] = number;
+				  window.location.hash = oRD;
+			   };
+			   
+			   window.onhashchange = function(){
+				  var number = obj[window.location.hash.substring(1)] || '';
+				  oDiv.innerHTML = number;
+			   };
+			   
+			   function randomNum(alls,now){
+				  var arr = [];
+				  var newArr = [];
+				  
+				  for(var i=1; i<=alls; i++){
+					arr.push(i);
+				  }
+				  
+				  for(var i=0; i<now; i++){
+					newArr.push(arr.splice(Math.floor(Math.random()*arr.length),1));			 
+				  }
+				  return newArr;
+			   }
+			};
+		</script>
+   </head>   
+   <body>
+      <input type="button" value="35选7" id="input"/>
+      <div id="div"></div>	  
+      
+   </body>
+</html>
