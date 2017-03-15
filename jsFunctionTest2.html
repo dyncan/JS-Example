@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>js function test</title>
+	<script type="text/javascript">
+		//让外部的作用域可以访问到局部变量
+		function fn1() {
+			var a = 12;
+
+			function fn2() {
+				a += 12;
+				console.log(a);
+			}
+			return fn2;
+		}
+		//函数套函数 吧内嵌的函数返回出来。
+		var result = fn1(); //  result  = fn2();
+		result();
+		console.log(result);
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

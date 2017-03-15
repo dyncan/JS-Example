@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>js function test</title>
+<script type="text/javascript" >
+
+	//result: Uncaught TypeError: fnName is not a function.
+	//solution： 变量fnName还未保存对函数的引用，函数调用必须在函数表达式之后.
+	/*fnName();
+	var fnName = function(){
+		console.log('test1');
+	}*/
+
+	//result: success.
+	//Javascript引擎在解析javascript代码时会‘函数声明提升’（Function declaration Hoisting）当前执行环境（作用域）上的函数声明.
+	/*fnName();
+	function fnName(){
+	    console.log('test2');
+	};*/
+
+	//result: success.
+	//函数表达式后面加括号，当javascript引擎解析到此处时能立即调用函数.
+	/*var fnName = function(){
+	    console.log('test3');
+	}();*/
+
+	//result: Uncaught SyntaxError: Unexpected token )
+	/*function fnName(){
+	    console.log('test4');
+	}();*/
+
+	//result: Uncaught SyntaxError: Unexpected token (
+	/*function(){
+	    console.log('test5');
+	}();*/
+
+
+	// (function(a){
+	//     console.log(a);   //输出123,使用（）运算符
+	// })(123);
+	//
+	// (function(a){
+	// 	console.log(a);//输出12345,使用（）运算符
+	// }(12345));
+
+	// var a  = 10;
+	// function test(){
+	// 	 a = 100;
+	// 	 console.log(a);
+	// 	 console.log(this.a);
+	// 	 var a;
+	// 	 console.log(a);
+	// }
+	// test();
+</script>
+</head>
+<body>
+</body>
+</html>

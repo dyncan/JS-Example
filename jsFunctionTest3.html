@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		// window.onload = function() {
+		// 	for (var i = 0; i < 3; i++) {
+		// 		//获取按钮
+		// 		var btn = document.getElementById('btn' + i); //btn 是一个地址;
+		// 		var arr = ['img/c1.jpg', 'img/c2.jpg', 'img/c3.jpg'];
+		// 		//num接受i的传参 是会保留在内存中
+		// 		(function(num) {
+		// 			btn.onmouseover = function() {
+		// 				console.log("btn" + num);
+		// 				document.getElementById('img').src = arr[num];
+		// 			};
+		// 		})(i);
+		// 	}
+		// }
+
+
+		// function fnA() {
+		// 	var name = 'test';
+		// 	return function(){
+		// 		return name;
+		// 	}
+		// }
+		// console.log(fnA()());
+		// var fnB = fnA();
+		// console.log(fnB());
+
+
+		// var num = 0; //全局变量
+		// function a() {
+		// 	num++; //模块级可以调用全局变量，进行累加
+		// }
+		// a(); //1
+		// a(); //2           //执行函数，累加了
+		// console.log(num); //输出全局变量
+
+
+		function a() {
+			var num = 0;
+			return function() {
+				num++;
+				return num;
+			}
+		}
+
+		var b = a(); //获得函数
+
+		console.log(b()); //1     //调用匿名函数
+		console.log(b()); //2      //第二次调用匿名函数，实现累加
+	</script>
+</head>
+
+<body>
+	<button id="btn0">button1</button>
+	<button id="btn1">button2</button>
+	<button id="btn2">button3</button>
+	<div>
+		<img src="" id="img">
+	</div>
+</body>
+
+</html>
